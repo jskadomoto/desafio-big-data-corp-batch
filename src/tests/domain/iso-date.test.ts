@@ -24,7 +24,13 @@ describe('toISODateField', () => {
     expect(toISODateField('2023-02-29')).toBe('')
     expect(toISODateField('2024-13-01')).toBe('')
     expect(toISODateField('2024-00-10')).toBe('')
+    expect(toISODateField('2024-01-00')).toBe('')
     expect(toISODateField('30/02/2024')).toBe('')
+  })
+
+  it('aplica a regra do século para 29 de fevereiro', () => {
+    expect(toISODateField('2000-02-29')).toBe('2000-02-29')
+    expect(toISODateField('1900-02-29')).toBe('')
   })
 
   it('o sufixo de hora é descartado sem ter o valor validado', () => {

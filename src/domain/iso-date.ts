@@ -4,27 +4,27 @@ const HOUR = /^\d{2}:\d{2}(:\d{2})?(\.\d+)?([Z+-][\d:]*)?$/
 
 const DATE_BR = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/
 
-// Formata uma data no formato ISO 8601 (YYYY-MM-DD) a partir de um valor numérico, garantindo que o mês e o dia tenham dois dígitos.
-const formatDateToISO = (value: number): string => String(value).padStart(2, '0')
+const DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-const canonicalizeDate = (year: number, month: number, day: number): string => {
-  const date = new Date(year, month - 1, day)
-  date.setUTCFullYear(year)
-  const isExists =
-    date.getUTCFullYear() === year && date.getUTCMonth() === month - 1 && date.getUTCDate() === day
+const pad = (value: number, width: number): string => String(value).padStart(width, '0')
 
-  return isExists
-    ? `${String(year).padStart(4, '0')}-${formatDateToISO(month)}-${formatDateToISO(day)}`
+const isLeapYear = (year: number): boolean =>
+  year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)
+
+const daysInMonth = (year: number, month: number): number =>
+  month === 2 && isLeapYear(year) ? 29 : (DAYS_IN_MONTH[month - 1] ?? 0)
+
+const canonicalizeDate = (year: number, month: number, day: number): string =>
+  day >= 1 && day <= daysInMonth(year, month)
+    ? `${pad(year, 4)}-${pad(month, 2)}-${pad(day, 2)}`
     : ''
-}
 
 export const toISODateField = (value: unknown): string => {
   if (typeof value !== 'string') return ''
   const iso = ISO.exec(value)
-
   if (iso !== null) {
     const hour = iso[4]
-    if (hour !== undefined && typeof hour === 'string' && !HOUR.test(hour)) return ''
+    if (hour !== undefined && !HOUR.test(hour)) return ''
     return canonicalizeDate(Number(iso[1]), Number(iso[2]), Number(iso[3]))
   }
 
