@@ -11,6 +11,7 @@
     "generate": "npm run build && node dist/cli/index.js data/sample_clubes.jsonl output",
     "generate:sample": "node scripts/generate-sample.mjs data/sample/sample.jsonl 1000000",
     "sample": "npm run build && node dist/cli/index.js data/sample/sample.jsonl output/sample",
+    "mutants": "node scripts/mutants.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
