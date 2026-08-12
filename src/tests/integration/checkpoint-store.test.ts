@@ -1,15 +1,22 @@
 import * as fsPromises from 'node:fs/promises'
-import { vi } from 'vitest'
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { afterEach, beforeEach, describe, expect, it } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import {
   CHECKPOINT_VERSION,
   createCheckpointStore,
   type Checkpoint,
 } from '../../infrastructure/checkpoint-store.ts'
 import { emptySummary } from '../../application/process-clubs-file.ts'
+
+vi.mock('node:fs/promises', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('node:fs/promises')>()
+  return {
+    ...actual,
+    rename: vi.fn(actual.rename),
+  }
+})
 
 let dir: string
 let path: string
