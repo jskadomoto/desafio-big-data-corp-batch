@@ -1,0 +1,9 @@
+dist/
+coverage/
+package-lock.json
+
+# Saída e entrada de dados: formatar CSV ou JSONL mudaria os bytes que o
+# programa produz e consome, que é justamente o que os testes comparam.
+output/
+data/
+tests/fixtures/

@@ -1,0 +1,46 @@
+{
+  "name": "desafio-big-data-corp-batch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/cli/index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsx src/cli/index.ts",
+    "sample": "npm run build && node dist/cli/index.js data/sample_clubes.jsonl output",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jskadomoto/desafio-big-data-corp-batch.git"
+  },
+  "keywords": [],
+  "author": "Jones Kadomoto",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/jskadomoto/desafio-big-data-corp-batch/issues"
+  },
+  "homepage": "https://github.com/jskadomoto/desafio-big-data-corp-batch#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.2.0",
+    "@vitest/coverage-v8": "^4.1.10",
+    "eslint": "^10.8.1",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.9.6",
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2",
+    "typescript-eslint": "^8.67.0",
+    "vitest": "^4.1.10"
+  }
+}
