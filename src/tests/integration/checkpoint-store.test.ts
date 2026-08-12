@@ -1,3 +1,5 @@
+import * as fsPromises from 'node:fs/promises'
+import { vi } from 'vitest'
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -93,5 +95,16 @@ describe('createCheckpointStore', () => {
     await store.save(checkpoint)
 
     await expect(readFile(`${path}.tmp`, 'utf8')).rejects.toThrow(/ENOENT/)
+  })
+
+  it('deve gravar o checkpoint de forma atômica usando .tmp', async () => {
+    const renameSpy = vi.spyOn(fsPromises, 'rename')
+    const store = createCheckpointStore(path)
+
+    await store.save(checkpoint)
+
+    expect(renameSpy).toHaveBeenCalledWith(`${path}.tmp`, path)
+
+    renameSpy.mockRestore()
   })
 })
