@@ -8,8 +8,9 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "dev": "tsx src/cli/index.ts",
-    "sample": "npm run build && node dist/cli/index.js data/sample_clubes.jsonl output",
+    "generate": "npm run build && node dist/cli/index.js data/sample_clubes.jsonl output",
+    "generate:sample": "node scripts/generate-sample.mjs data/sample/sample.jsonl 1000000",
+    "sample": "npm run build && node dist/cli/index.js data/sample/sample.jsonl output/sample",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
