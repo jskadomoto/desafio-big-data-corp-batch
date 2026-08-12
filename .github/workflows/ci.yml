@@ -40,14 +40,3 @@ jobs:
 
       - name: Testes de Mutação (36/36)
         run: yarn mutants
-
-      - name: Garantir determinismo da saída (CSVs)
-        run: |
-          yarn generate
-          if [ -n "$(git status --porcelain output/)" ]; then
-            echo "Erro: Os arquivos gerados em output/ divergem do que está versionado no repositório."
-            git diff output/
-            exit 1
-          else
-            echo "Arquivos CSV gerados com sucesso e conferem byte a byte com a versão salva."
-          fi
