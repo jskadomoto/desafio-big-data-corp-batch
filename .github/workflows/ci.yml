@@ -1,53 +1,53 @@
 name: CI Pipeline
 
 on:
-    push:
-        branches: ["main"]
+  push:
+    branches: ['main']
 
 jobs:
-    build-and-test:
-        name: Node.js ${{ matrix.node-version }}
-        runs-on: ubuntu-latest
+  build-and-test:
+    name: Node.js ${{ matrix.node-version }}
+    runs-on: ubuntu-latest
 
-        strategy:
-            matrix:
-                node-version: [20, 22, 24]
+    strategy:
+      matrix:
+        node-version: [20, 22, 24]
 
-        steps:
-            - name: Checkout do código
-              uses: actions/checkout@v4
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
 
-            - name: Configurar Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v4
-              with:
-                  node-version: ${{ matrix.node-version }}
-                  cache: "yarn"
+      - name: Configurar Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
 
-            - name: Instalar dependências
-              run: yarn install --frozen-lockfile
+      - name: Instalar dependências
+        run: yarn install --frozen-lockfile
 
-            - name: Verificar tipagem (Typecheck)
-              run: yarn typecheck
+      - name: Verificar tipagem (Typecheck)
+        run: yarn typecheck
 
-            - name: Verificar formatação (Prettier)
-              run: yarn format:check
+      - name: Verificar formatação (Prettier)
+        run: yarn format:check
 
-            - name: Analisar código (ESLint)
-              run: yarn lint
+      - name: Analisar código (ESLint)
+        run: yarn lint
 
-            - name: Testes Unitários e Cobertura (100%)
-              run: yarn coverage
+      - name: Testes Unitários e Cobertura (100%)
+        run: yarn coverage
 
-            - name: Testes de Mutação (36/36)
-              run: yarn mutants
+      - name: Testes de Mutação (36/36)
+        run: yarn mutants
 
-            - name: Garantir determinismo da saída (CSVs)
-              run: |
-                  yarn generate
-                  if [ -n "$(git status --porcelain output/)" ]; then
-                    echo "Erro: Os arquivos gerados em output/ divergem do que está versionado no repositório."
-                    git diff output/
-                    exit 1
-                  else
-                    echo "Arquivos CSV gerados com sucesso e conferem byte a byte com a versão salva."
-                  fi
+      - name: Garantir determinismo da saída (CSVs)
+        run: |
+          yarn generate
+          if [ -n "$(git status --porcelain output/)" ]; then
+            echo "Erro: Os arquivos gerados em output/ divergem do que está versionado no repositório."
+            git diff output/
+            exit 1
+          else
+            echo "Arquivos CSV gerados com sucesso e conferem byte a byte com a versão salva."
+          fi

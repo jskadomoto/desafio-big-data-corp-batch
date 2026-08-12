@@ -33,7 +33,6 @@ npm run generate:sample
 npm run sample
 ```
 
-
 ## Retomada depois de uma queda
 
 Não existe comando de retomada: é o mesmo comando. A cada 100 mil linhas o programa grava um ponto de retomada no diretório de saída, com até onde a entrada foi lida, quantos bytes de cada CSV já estão efetivados no disco e os contadores acumulados.
@@ -54,7 +53,6 @@ DESAFIO_BATCH_CHECKPOINT_INTERVAL=20000 node dist/cli/index.js base.jsonl ./outp
 ```
 
 É o botão que troca custo por trabalho perdido: mais pontos custam mais `fsync`, menos pontos significam reprocessar mais linhas depois de uma queda. Um valor que não seja inteiro positivo derruba a execução com código 1, em vez de cair no padrão em silêncio.
-
 
 ## Saídas
 
@@ -167,7 +165,7 @@ data/
     sample.jsonl  # Gerado a partir do script: npm run generate:sample
   sample_clubes.jsonl  a entrada de exemplo do enunciado
 output/
-  /sample 
+  /sample
     clubs.csv  # Gerado a partir do script: npm run sample
     players.csv  # Gerado a partir do script: npm run sample
   clubs.csv         a saída do programa sobre o sample, versionada

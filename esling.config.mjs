@@ -1,11 +1,11 @@
-import js from "@eslint/js";
-import { defineConfig, globalIgnores } from "eslint/config";
-import prettier from "eslint-config-prettier";
-import globals from "globals";
-import tseslint from "typescript-eslint";
+import js from '@eslint/js'
+import { defineConfig, globalIgnores } from 'eslint/config'
+import prettier from 'eslint-config-prettier'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
 
 export default defineConfig([
-  globalIgnores(["dist/", "coverage/", "output/", "data/"]),
+  globalIgnores(['dist/', 'coverage/', 'output/', 'data/']),
   js.configs.recommended,
   tseslint.configs.recommendedTypeChecked,
   {
@@ -17,13 +17,13 @@ export default defineConfig([
     },
   },
   {
-    files: ["**/*.mjs"],
+    files: ['**/*.mjs'],
     extends: [tseslint.configs.disableTypeChecked],
     languageOptions: { globals: globals.node },
   },
   {
-    files: ["tests/**/*.ts"],
-    rules: { "@typescript-eslint/require-await": "off" },
+    files: ['tests/**/*.ts'],
+    rules: { '@typescript-eslint/require-await': 'off' },
   },
   prettier,
-]);
+])
