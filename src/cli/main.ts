@@ -14,7 +14,7 @@ import {
 } from '../infrastructure/checkpoint-store.ts'
 import { createCsvFileWriter, partialBytes } from '../infrastructure/csv-file-writer.ts'
 import { CLUB_HEADERS, PLAYER_HEADERS } from '../domain/transform.ts'
-import { linesFrom } from '../infrastructure/jsonl-file.store.ts'
+import { linesFrom } from '../infrastructure/jsonl-file.source.ts'
 import { TabularWriter } from '../application/ports.ts'
 
 const USAGE =
