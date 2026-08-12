@@ -1,0 +1,11 @@
+{"club_id":"SCCP","name":"Sport Club Corinthians Paulista","championship":"SERIE A","founding_date":"1910-09-01","city":"São Paulo","state":"SP","country":"Brasil","stadium":"Neo Química Arena","president":"Augusto Melo","nickname":"Timão","colors":["preto","branco"],"titles":30,"players":[{"player_id":"SCCP-10","name":"Rodrigo Garro","age":26,"goals":8,"debut_date":"2024-01-18","position":"Meia","shirt_number":10,"nationality":"Argentina","market_value":12000000},"jogador quebrado",{"player_id":"SCCP-9","name":"Yuri Alberto","age":24,"goals":15,"debut_date":"06/08/2022","position":"Atacante","shirt_number":9}]}
+{"club_id":"CRF","name":"Clube de Regatas do Flamengo","championship":"Série A","founding_date":"1895-11-17","city":"Rio de Janeiro","state":"RJ","country":"Brasil","stadium":"Maracanã","president":"Rodolfo Landim","nickname":"Mengão, o Rubro-Negro","colors":["vermelho","preto"],"players":[{"player_id":"CRF-10","name":"Giorgian de Arrascaeta","age":30,"goals":12,"debut_date":"2019-1-20","position":"Meia","shirt_number":10}]}
+
+{"club_id":"SPFC","name":"São Paulo Futebol Clube","championship":"Libertadores","players":[{"player_id":"SPFC-1","name":"Rafael"}]}
+{"club_id":"CAM","name":"Clube Atlético Mineiro","championship":"SERIE C"}
+{"name":"Clube sem identificador","championship":"SERIE A"}
+{"club_id":"AVA","name":"Avaí Futebol Clube","championship":"SERIE B","players":"nenhum"}
+{"club_id":"BOT","championship":"SERIE A"
+{"club_id":"CRB","name":"Clube de Regatas Brasil","championship":"  serie   b ","founding_date":"1912-09-20T00:00:00Z","city":"Maceió","state":"AL","country":"Brasil","stadium":"Estádio Rei Pelé","president":"Mário Marroquim","nickname":"Galo","colors":["vermelho","branco","preto"]}
+["SCCP","não é objeto"]
+{"club_id":"XYZ","name":"Clube \"Aspas\" e, vírgula","championship":"SERIE B","founding_date":"2024-02-30","nickname":"quebra\nde linha","colors":[],"players":[]}
